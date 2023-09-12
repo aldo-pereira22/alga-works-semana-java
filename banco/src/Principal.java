@@ -2,34 +2,37 @@ public class Principal {
     public static void main(String[] args) {
 
         Pessoa titular1 = new Pessoa();
-        titular1.nome  = "João da Silva";
-        titular1.documento = "111111111111";
+        titular1.setNome("João");
+        titular1.setDocumento("1111111111");
 
 
         Pessoa titular2 = new Pessoa();
-        titular2.nome = "Maria da Abadia";
-        titular2.documento = "222222222222";
+        titular2.setNome("Maria da Abadia");
+        titular2.setDocumento("222222222222");
 
         Conta minhaConta = new Conta();
-        minhaConta.titular = titular1;
-        minhaConta.agencia= 123;
-        minhaConta.numero = 987;
-        minhaConta.saldo = 15.000;
+        minhaConta.setTitular(titular1);
+        minhaConta.setTitular(titular2);
+//        minhaConta.saldo = 15.000;
+        minhaConta.depositar(18_000);
+        minhaConta.sacar(17_000, 10);
 
 
         Conta suaConta = new Conta();
-        suaConta.titular = titular2;
-        suaConta.agencia = 222;
-        suaConta.numero = 333;
-        suaConta.saldo = 30_000;
+        suaConta.setTitular(titular2);
+        suaConta.setAgencia(222);
+        suaConta.setNumero(333);
+//        suaConta.saldo = 30_000;
+        suaConta.depositar(10_000);
 
 
-        System.out.println("\n\nTitular: " +minhaConta.titular.nome);
-        System.out.println("Saldo: " + minhaConta.saldo);
+
+        System.out.println("\n\nTitular: " +minhaConta.getTitular().getNome());
+        System.out.println("Saldo: " + minhaConta.getSaldo());
 
 
-        System.out.println("\n\n\nTitular: " +suaConta.titular.nome);
-        System.out.println("Saldo: " + suaConta.saldo);
+        System.out.println("\n\n\nTitular: " +suaConta.getTitular().getNome());
+        System.out.println("Saldo: " + suaConta.getSaldo());
 
     }
 }
