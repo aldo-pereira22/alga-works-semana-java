@@ -1,3 +1,9 @@
+package app;
+
+import modelo.Conta;
+import modelo.ContaInvestimento;
+import modelo.Pessoa;
+
 public class Principal {
     public static void main(String[] args) {
 
@@ -10,12 +16,11 @@ public class Principal {
         titular2.setNome("Maria da Abadia");
         titular2.setDocumento("222222222222");
 
-        Conta minhaConta = new Conta();
-        minhaConta.setTitular(titular1);
-        minhaConta.setTitular(titular2);
-//        minhaConta.saldo = 15.000;
+        ContaInvestimento minhaConta = new ContaInvestimento(titular1,123, 987);
+
         minhaConta.depositar(18_000);
-        minhaConta.sacar(17_000, 10);
+        minhaConta.sacar(17);
+        minhaConta.creditarRendimentos(0.8);
 
 
         Conta suaConta = new Conta();

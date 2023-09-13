@@ -1,3 +1,5 @@
+package modelo;
+
 public class Conta {
 
     private Pessoa titular;
@@ -6,7 +8,7 @@ public class Conta {
     private double saldo;
 
 
-    Conta(){
+    public Conta(){
 
     }
 
@@ -16,14 +18,14 @@ public class Conta {
         this.numero = numero;
     }
 
-    void depositar(double valor){
+    public void depositar(double valor){
         if( valor <= 0){
             throw new IllegalArgumentException("Valor deve ser maior que 0");
         }
         this.saldo += valor;
     }
 
-    void sacar(double valor){
+    public void sacar(double valor){
 
         if(valor <= 0){
             throw  new IllegalArgumentException("Valor deve ser maior que 0");
@@ -35,7 +37,7 @@ public class Conta {
         this.saldo -= valor;
     }
 
-    void sacar(double valor, double taxaSaque){
+    public void sacar(double valor, double taxaSaque){
         sacar(valor - taxaSaque);
     }
 
