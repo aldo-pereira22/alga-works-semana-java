@@ -1,6 +1,7 @@
 package app;
 
 import modelo.Conta;
+import modelo.ContaEspecial;
 import modelo.ContaInvestimento;
 import modelo.Pessoa;
 
@@ -17,6 +18,8 @@ public class Principal {
         titular2.setDocumento("222222222222");
 
         ContaInvestimento minhaConta = new ContaInvestimento(titular1,123, 987);
+        ContaEspecial outraConta = new ContaEspecial(titular2, 123, 987, 1000);
+
 
         minhaConta.depositar(18_000);
         minhaConta.sacar(17);
