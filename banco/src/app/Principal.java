@@ -20,6 +20,7 @@ public class Principal {
         ContaInvestimento minhaConta = new ContaInvestimento(titular1,123, 987);
         ContaEspecial outraConta = new ContaEspecial(titular2, 123, 987, 1000);
 
+        Conta conta = (Conta) minhaConta;
 
         minhaConta.depositar(18_000);
         minhaConta.sacar(17);
