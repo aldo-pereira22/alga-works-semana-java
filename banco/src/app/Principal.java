@@ -17,31 +17,25 @@ public class Principal {
         titular2.setNome("Maria da Abadia");
         titular2.setDocumento("222222222222");
 
+
+
         ContaInvestimento minhaConta = new ContaInvestimento(titular1,123, 987);
         ContaEspecial outraConta = new ContaEspecial(titular2, 123, 987, 1000);
 
-        Conta conta = (Conta) minhaConta;
+        Conta conta = minhaConta;
+        conta.debitarTarficaMensal();
 
         minhaConta.depositar(18_000);
         minhaConta.sacar(17);
         minhaConta.creditarRendimentos(0.8);
 
 
-        Conta suaConta = new Conta();
-        suaConta.setTitular(titular2);
-        suaConta.setAgencia(222);
-        suaConta.setNumero(333);
-//        suaConta.saldo = 30_000;
-        suaConta.depositar(10_000);
+
 
 
 
         System.out.println("\n\nTitular: " +minhaConta.getTitular().getNome());
         System.out.println("Saldo: " + minhaConta.getSaldo());
-
-
-        System.out.println("\n\n\nTitular: " +suaConta.getTitular().getNome());
-        System.out.println("Saldo: " + suaConta.getSaldo());
 
     }
 }
