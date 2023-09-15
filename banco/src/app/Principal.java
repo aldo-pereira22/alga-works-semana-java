@@ -1,14 +1,14 @@
 package app;
 
-import modelo.Conta;
-import modelo.ContaEspecial;
-import modelo.ContaInvestimento;
 import modelo.Pessoa;
+import modelo.TipoPessoa;
 import modelo.atm.CaixaEletronico;
 import modelo.excessao.SaldoInsuficienteException;
 import modelo.pagamento.Boleto;
-import modelo.pagamento.DocumentoPagavel;
 import modelo.pagamento.Holerite;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Principal {
     public static void main(String[] args) {
@@ -16,7 +16,13 @@ public class Principal {
         Pessoa titular1 = new Pessoa();
         titular1.setNome("João");
         titular1.setDocumento("1111111111");
+        titular1.setRendimentoAnual(new BigDecimal("15000"));
+        titular1.setTipo(TipoPessoa.JURIDICA);
+        System.out.println(titular1.getTipo());
 
+//        titular1.setDataUltimaAtualizacao(LocalDateTime.parse("2023-06-27T13:20:00"));
+//        System.out.println("Ultima atualização:"+ titular1.getDataUltimaAtualizacao());
+//        Double rendimento = titular1.getRendimentoAnual();
 
         Pessoa titular2 = new Pessoa();
         titular2.setNome("Maria da Abadia");
@@ -29,12 +35,12 @@ public class Principal {
 //        Conta conta = minhaConta;
 //        conta.debitarTarficaMensal();
     try{
-        Boleto boletoEscola = new Boleto(titular2, 500_000);
-        Holerite salarioFuncionario = new Holerite(titular2, 100, 160);
+        Boleto boletoEscola = new Boleto(titular2, new BigDecimal("15000"));
+        Holerite salarioFuncionario = new Holerite(titular2, new BigDecimal("15000"), 160);
 
         CaixaEletronico caixaEletronico = new CaixaEletronico();
 //        caixaEletronico.estornarPagamento(boletoEscola, caixaEletronico);
-        caixaEletronico.depositar(30_000);
+        caixaEletronico.depositar(new BigDecimal("30000"));
         caixaEletronico.pagar(boletoEscola,caixaEletronico);
         caixaEletronico.pagar(salarioFuncionario, caixaEletronico);
 

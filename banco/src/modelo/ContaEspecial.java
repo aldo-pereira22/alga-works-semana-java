@@ -1,9 +1,11 @@
 package modelo;
 
-public class ContaEspecial extends Conta {
-    private double limite;
+import java.math.BigDecimal;
 
-    public ContaEspecial(Pessoa titular, int agencia, int numero, double limite) {
+public class ContaEspecial extends Conta {
+    private BigDecimal limite;
+
+    public ContaEspecial(Pessoa titular, int agencia, int numero, BigDecimal limite) {
         super(titular, agencia, numero);
         this.limite = limite;
     }
@@ -14,21 +16,19 @@ public class ContaEspecial extends Conta {
 
     @Override
     public void debitarTarficaMensal() {
-        if(getSaldoDisponivel() < 10_000){
-            sacar(30);
-        }
+        sacar(new BigDecimal("20"));
     }
 
     @Override
-    public double getSaldoDisponivel() {
-        return  getSaldo() + getLimite();
+    public BigDecimal getSaldoDisponivel() {
+        return  getSaldo().add(getLimite()) ;
     }
 
-    public double getLimite() {
+    public BigDecimal getLimite() {
         return limite;
     }
 
-    public void setLimite(double limite) {
+    public void setLimite(BigDecimal limite) {
         this.limite = limite;
     }
 
