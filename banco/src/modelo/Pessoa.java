@@ -76,4 +76,9 @@ public class Pessoa {
 
         return documento.equals(((Pessoa) obj).documento);
     }
+
+    @Override
+    public int hashCode() {
+        return 1;
+    }
 }
