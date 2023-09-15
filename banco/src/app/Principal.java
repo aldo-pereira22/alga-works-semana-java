@@ -5,6 +5,7 @@ import modelo.ContaEspecial;
 import modelo.ContaInvestimento;
 import modelo.Pessoa;
 import modelo.atm.CaixaEletronico;
+import modelo.excessao.SaldoInsuficienteException;
 import modelo.pagamento.Boleto;
 import modelo.pagamento.DocumentoPagavel;
 import modelo.pagamento.Holerite;
@@ -27,12 +28,12 @@ public class Principal {
 //
 //        Conta conta = minhaConta;
 //        conta.debitarTarficaMensal();
-
-        Boleto boletoEscola = new Boleto(titular2, 10_000);
+    try{
+        Boleto boletoEscola = new Boleto(titular2, 500_000);
         Holerite salarioFuncionario = new Holerite(titular2, 100, 160);
 
         CaixaEletronico caixaEletronico = new CaixaEletronico();
-        caixaEletronico.estornarPagamento(boletoEscola, caixaEletronico);
+//        caixaEletronico.estornarPagamento(boletoEscola, caixaEletronico);
         caixaEletronico.depositar(30_000);
         caixaEletronico.pagar(boletoEscola,caixaEletronico);
         caixaEletronico.pagar(salarioFuncionario, caixaEletronico);
@@ -40,6 +41,11 @@ public class Principal {
         System.out.println(caixaEletronico.getSaldo());
         boletoEscola.imprimirRecibo();
         salarioFuncionario.imprimirRecibo();
+
+    }catch (SaldoInsuficienteException ex){
+        System.out.println("Erro ao exectuar operação na conta"+ ex.getMessage());
+    }
+
 //        caixaEletronico.pagar(boletoEscola, minhaConta);
 //        System.out.println("Boleto pago: " + boletoEscola.estaPago());
 

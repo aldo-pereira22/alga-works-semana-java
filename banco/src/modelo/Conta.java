@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.excessao.SaldoInsuficienteException;
+
 public abstract class Conta {
 
     private Pessoa titular;
@@ -31,7 +33,7 @@ public abstract class Conta {
             throw  new IllegalArgumentException("Valor deve ser maior que 0");
         }
         if(getSaldoDisponivel() - valor < 0){
-            throw new IllegalStateException("Saldo insuficiente!");
+            throw new SaldoInsuficienteException("Saldo insuficiente!");
         }
 
         this.saldo -= valor;
