@@ -2,9 +2,12 @@ package app;
 
 import modelo.Banco;
 import modelo.Conta;
+import modelo.Pessoa;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Principal4 {
@@ -36,6 +39,11 @@ public class Principal4 {
         BigDecimal saldoTotal = banco.getContas().stream()
                         .map(Conta::getSaldo)
                                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        List<Pessoa> titulares = banco.getContas().stream()
+                .map(Conta::getTitular)
+                .distinct()
+                .collect(Collectors.toList());
 
         System.out.println("SALDO TOTAL: "+ saldoTotal);
         banco.getContas().stream()
