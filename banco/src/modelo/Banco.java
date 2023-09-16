@@ -8,8 +8,8 @@ public class Banco {
     private List<Conta> contas = new ArrayList<>();
 
     public Banco(){
-        Pessoa pessoa1 =  new Pessoa("João da Silva", "123123");
-        Pessoa pessoa2 =  new Pessoa("João da Silva", "123123");
+        Pessoa pessoa1 =  new Pessoa("João da Silva", "1231233");
+        Pessoa pessoa2 =  new Pessoa("MAria da Silva", "12311232323");
 
         Conta conta1 = new ContaInvestimento(pessoa1, 222,999);
         Conta conta2 = new ContaInvestimento(pessoa1, 222,888);

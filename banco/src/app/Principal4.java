@@ -22,14 +22,28 @@ public class Principal4 {
 //            System.out.println(conta.getAgencia()+" / " +
 //                    "" +conta.getNumero() +" = " + conta.getSaldo());
 //        });
+//        Banco banco = new Banco();
+//        banco.getContas().stream()
+//                .filter(conta-> conta.getSaldo().compareTo(new BigDecimal("50")) > 0)
+//                .filter(conta -> conta.getNumero()>200)
+//                .sorted(Comparator.comparingInt(Conta::getNumero))
+//                .forEach(conta -> {
+//                                System.out.println(conta.getAgencia()+" / " +
+//                    "" +conta.getNumero() +" = " + conta.getSaldo());
+//                });
         Banco banco = new Banco();
+
+        BigDecimal saldoTotal = banco.getContas().stream()
+                        .map(Conta::getSaldo)
+                                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        System.out.println("SALDO TOTAL: "+ saldoTotal);
         banco.getContas().stream()
                 .filter(conta-> conta.getSaldo().compareTo(new BigDecimal("50")) > 0)
                 .filter(conta -> conta.getNumero()>200)
-                .sorted(Comparator.comparingInt(Conta::getNumero))
-                .forEach(conta -> {
-                                System.out.println(conta.getAgencia()+" / " +
-                    "" +conta.getNumero() +" = " + conta.getSaldo());
-                });
+                .map(Conta::getTitular)
+                .distinct()
+                .forEach(System.out::println);
+
     }
 }
