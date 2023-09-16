@@ -26,7 +26,8 @@ public abstract class Conta {
         if( valor.compareTo(BigDecimal.ZERO) <= 0){
             throw new IllegalArgumentException("Valor deve ser maior que 0");
         }
-        this.saldo.add(valor);
+        this.setSaldo(valor);
+
     }
 
     public void sacar(BigDecimal valor){
