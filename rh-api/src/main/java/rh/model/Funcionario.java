@@ -1,11 +1,18 @@
 package rh.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
+@Entity
 public class Funcionario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String email;
     private BigDecimal salario;
@@ -20,9 +27,10 @@ public class Funcionario {
         return Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(email, that.email) && Objects.equals(salario, that.salario) && Objects.equals(dataAdmissao, that.dataAdmissao) && status == that.status;
     }
 
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, email, salario, dataAdmissao, status);
+        return Objects.hash(id);
     }
 
     @Override
